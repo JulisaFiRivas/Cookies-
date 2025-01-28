@@ -1,0 +1,84 @@
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <img src="image1.png" alt="Logo" class="logo">
+      <button mat-icon-button class="close-btn" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </header>
+
+    <div class="popup-subheader">
+      <h2>Configuración de cookies</h2>
+      <div class="subtitle">
+        Las cookies mejoran tu experiencia, analizan la navegación, personalizan contenido y aseguran la funcionalidad. Puedes gestionar tus preferencias y obtener más detalles sobre cada tipo de cookie para ajustar la configuración. Más información en nuestra
+        <a [routerLink]="['/cookies/politicas']" class="cookie-link" (click)="closeDialog()">Política de cookies</a>.
+      </div>
+    </div>
+
+    <form>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Necesarias (Siempre activas)</label>
+          <p>Cookies de sesión de origen necesarias para el funcionamiento del sitio web o de los servicios que has solicitado en línea.</p>
+        </div>
+        <mat-slide-toggle  [checked]="true" [disabled]="true" ></mat-slide-toggle>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Necesarias (Siempre activas)</label>
+          <p>Cookies de sesión de origen necesarias para el funcionamiento del sitio web o de los servicios que has solicitado en línea.</p>
+        </div>
+        <mat-slide-toggle  [checked]="true" [disabled]="true" ></mat-slide-toggle>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Necesarias (Siempre activas)</label>
+          <p>Cookies de sesión de origen necesarias para el funcionamiento del sitio web o de los servicios que has solicitado en línea.</p>
+        </div>
+        <mat-slide-toggle  [checked]="true" [disabled]="true" ></mat-slide-toggle>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Necesarias (Siempre activas)</label>
+          <p>Cookies de sesión de origen necesarias para el funcionamiento del sitio web o de los servicios que has solicitado en línea.</p>
+        </div>
+        <mat-slide-toggle  [checked]="true" [disabled]="true" ></mat-slide-toggle>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Necesarias (Siempre activas)</label>
+          <p>Cookies de sesión de origen necesarias para el funcionamiento del sitio web o de los servicios que has solicitado en línea.</p>
+        </div>
+        <mat-slide-toggle  [checked]="true" [disabled]="true" ></mat-slide-toggle>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Cookies Analíticas</label>
+          <p>Archivos de texto que se envían a su dispositivo mientras estás en un sitio web para recopilar información sobre su uso y ayudar al proveedor del sitio web a mejorar sus funciones y servicios.</p>
+        </div>
+        <mat-slide-toggle [(ngModel)]="cookies.Analiticas" name="analiticas"></mat-slide-toggle>
+      </div>
+
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Cookies Funcionales</label>
+          <p>Permiten que el sitio web le proporcione una funcionalidad mejorada y una mayor personalización, a partir de su interacción.</p>
+        </div>
+        <mat-slide-toggle [(ngModel)]="cookies.Funcionales" name="funcionales"></mat-slide-toggle>
+      </div>
+
+      <div class="cookie-option">
+        <div class="cookie-info">
+          <label>Cookies Comerciales</label>
+          <p>Ayuda a almacenar las preferencias y demás información que se utiliza en las páginas web que visita.</p>
+        </div>
+        <mat-slide-toggle [(ngModel)]="cookies.Comerciales" name="comerciales"></mat-slide-toggle>
+      </div>
+
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="guardarConfiguracion()">Guardar configuración</button>
+      </div>
+    </form>
+  </div>
+</body>

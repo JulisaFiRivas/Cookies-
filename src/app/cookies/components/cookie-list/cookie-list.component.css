@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  }
+
+.example-button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .example-flex-container {
+    display: flex;
+  }
+  
+  .example-button-container {
+    margin: 10px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px; 
+  }
+  
+  

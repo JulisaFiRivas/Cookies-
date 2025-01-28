@@ -1,0 +1,37 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+:root {
+  @include mat.slide-toggle-overrides((
+
+    selected-track-color: #FFFFFF,
+    selected-track-outline-color: #0096DB,
+    selected-handle-color: #0096DB,
+
+
+    unselected-track-color: #F0EFEF,
+    unselected-handle-color: #AAAAAA,
+
+
+    disabled-selected-track-color: #99CCE5,
+    disabled-selected-handle-color: #99CCE5,
+    disabled-selected-handle-opacity: #99CCE5,
+
+    selected-icon-size: 0,
+    unselected-icon-size: 0,
+  ));
+}

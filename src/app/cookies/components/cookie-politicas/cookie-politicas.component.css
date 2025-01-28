@@ -1,0 +1,81 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+  flex: 1 ;
+}
+.cookie-politicas-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  flex: 1 ;
+}
+
+.cookie-definition, .cookie-policies {
+  flex: 1;
+  max-width: 50%;
+}
+
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cookie-definition mat-card {
+  background-color: #f5f5f5;
+  flex: 1 ;
+}
+
+.policy-card {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.no-cookies-message {
+  text-align: center;
+  color: gray;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.cookie-policies {
+  display: flex;
+  flex-direction: column;
+  flex: 1 ;
+}
+
+.cookie-definition p {
+  line-height: 1.6;
+}
+
+
+.cookie-image-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cookie-image {
+  border-radius: 15px;
+  max-width: 60%; 
+  max-height: 300px; 
+  height: auto;
+  padding-bottom: 10px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+

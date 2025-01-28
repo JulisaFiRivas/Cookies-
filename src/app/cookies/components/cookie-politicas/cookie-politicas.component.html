@@ -1,0 +1,47 @@
+<div class="cookie-politicas-container">
+  <div class="cookie-definition">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>¿Qué son las cookies?</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Las cookies son pequeños archivos que se almacenan en tu dispositivo mientras navegas por nuestra página.
+          Nos ayudan a personalizar tu experiencia, recordar tus preferencias y ofrecerte contenido relevante.
+        </p>
+        <p>
+          Contamos con políticas específicas para garantizar tu privacidad. A continuación, puedes consultar nuestras políticas de cookies.
+        </p>
+      </mat-card-content>
+      <div class="cookie-image-container">
+        <img src="cookie.webp" alt="Imagen de cookies" class="cookie-image">
+      </div>
+    </mat-card>
+  </div>
+  
+  <div class="cookie-policies">
+    <mat-card-title class="title">Políticas Actuales</mat-card-title>
+    
+    <div *ngIf="loading" class="loading-spinner">
+      <mat-spinner></mat-spinner> 
+    </div>
+
+    <div *ngIf="!loading">
+      <div *ngFor="let cookie of dataSource.data" class="policy-card">
+        <mat-card class="mat-elevation-z3">
+          <mat-card-header>
+            <mat-card-title>{{ cookie.nombre }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ cookie.descripcion}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    <p *ngIf="dataSource.data.length === 0" class="no-cookies-message">
+      No se encontraron políticas de cookies registradas.
+    </p>
+    
+  </div>
+</div>
+
