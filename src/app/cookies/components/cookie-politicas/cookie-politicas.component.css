@@ -1,21 +1,20 @@
-
 body {
   font-family: 'Roboto', sans-serif;
-  flex: 1 ;
+  margin: 0;
+  padding: 0;
 }
+
 .cookie-politicas-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap; 
   gap: 20px;
   padding: 20px;
-  flex: 1 ;
 }
 
 .cookie-definition, .cookie-policies {
   flex: 1;
   max-width: 50%;
 }
-
 
 .title {
   font-size: 1.5rem;
@@ -25,12 +24,10 @@ body {
 
 .cookie-definition mat-card {
   background-color: #f5f5f5;
-  flex: 1 ;
 }
 
 .policy-card {
   margin-bottom: 20px;
-  flex: 1;
 }
 
 .no-cookies-message {
@@ -43,13 +40,11 @@ body {
 .cookie-policies {
   display: flex;
   flex-direction: column;
-  flex: 1 ;
 }
 
 .cookie-definition p {
   line-height: 1.6;
 }
-
 
 .cookie-image-container {
   margin-top: 20px;
@@ -59,8 +54,8 @@ body {
 
 .cookie-image {
   border-radius: 15px;
-  max-width: 60%; 
-  max-height: 300px; 
+  max-width: 60%;
+  max-height: 300px;
   height: auto;
   padding-bottom: 10px;
 }
@@ -79,3 +74,13 @@ body {
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .cookie-politicas-container {
+    flex-direction: column; 
+  }
+
+  .cookie-definition, .cookie-policies {
+    max-width: 100%; 
+    flex: none; 
+  }
+}
