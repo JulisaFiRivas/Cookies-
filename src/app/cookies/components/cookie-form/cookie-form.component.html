@@ -1,28 +1,36 @@
 <mat-card>
-    <h2>{{isEditMode ? 'Actualizar Cambios' : 'Agregar Cookie' }}</h2>
-    <form [formGroup] = "cookieForm" (ngSubmit) = "onSubmit()">
+  <h2>{{ isEditMode ? 'Actualizar Cookies' : 'Agregar Cookie' }}</h2>
+  <form [formGroup]="cookieForm" (ngSubmit)="onSubmit()">
 
-    <mat-form-field class="full-width">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" required />
-        <mat-error *ngIf="cookieForm.get('nombre')?.invalid">
-        </mat-error>
+      <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" required />
+          <mat-error *ngIf="cookieForm.get('nombre')?.hasError('required')">
+              El nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="cookieForm.get('nombre')?.hasError('pattern')">
+              No puede contener solo espacios.
+          </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <mat-label>Descripcion</mat-label>
-        <input matInput formControlName="descripcion" required />
-        <mat-error *ngIf="cookieForm.get('Descripcion')?.invalid">
-        </mat-error>
+          <mat-label>Descripción</mat-label>
+          <input matInput formControlName="descripcion" required />
+          <mat-error *ngIf="cookieForm.get('descripcion')?.hasError('required')">
+              La descripción es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="cookieForm.get('descripcion')?.hasError('pattern')">
+              No puede contener solo espacios.
+          </mat-error>
       </mat-form-field>
 
       <div class="form-action">
-        <button  mat-flat-button color="warn" type="submit" [disabled]="cookieForm.invalid" >
-            {{ isEditMode ? 'Actualizar Cambios' : 'Agregar Cookie' }}
-        </button>
-        <button mat-raised-button color="warm" (click)="router.navigate(['/cookies/list'])" type = "button">
-            Cancelar
-        </button>
+          <button mat-flat-button color="warn" type="submit" [disabled]="cookieForm.invalid">
+              {{ isEditMode ? 'Actualizar Cambios' : 'Agregar Cookie' }}
+          </button>
+          <button mat-raised-button color="warn" (click)="router.navigate(['/cookies/list'])" type="button">
+              Cancelar
+          </button>
       </div>  
-    </form>
+  </form>
 </mat-card>

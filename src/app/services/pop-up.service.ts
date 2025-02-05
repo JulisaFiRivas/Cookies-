@@ -14,5 +14,9 @@ export class PopUpService {
     this.dialog.open(CookiePopComponent, {
       data: cookies,  
     });
+    
   }
+
+  
+  
 }

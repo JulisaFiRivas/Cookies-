@@ -1,18 +1,21 @@
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .popup-container {
   position: fixed;
-  width: 620px;
+  width: 620px; 
   height: 844px;
   max-height: 80vh;
   top: 118px;
   left: 50%;
   transform: translateX(-50%);
   padding: 18px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
   overflow-y: auto;
@@ -22,14 +25,13 @@ body {
 
 header.popup-header {
   position: sticky;
-  max-width: 620px;
-  height: 101.48px;
   top: 0;
   background-color: white;
-  padding-bottom: 12px 16px;
+  padding: 12px 16px;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 header.popup-header .logo {
@@ -41,12 +43,13 @@ header.popup-header .logo {
 
 header.popup-header .close-btn {
   background: none;
-  border: none;
+  border: none !important;
   cursor: pointer;
   font-size: 24px;
   position: absolute;
-  top: 12px;
+  top: 16px;
   right: 16px;
+  color: #0096DB;
 }
 
 .popup-subheader {
@@ -90,6 +93,7 @@ header.popup-header .close-btn {
   border-bottom: 1px solid #D1D1D2;
   padding: 16px 0;
 }
+
 .cookie-info label {
   font-size: 24px;
   color: #01549B;
@@ -101,20 +105,6 @@ header.popup-header .close-btn {
   color: #626387;
   margin: 4px 0 0;
   padding: 16px;
-}
-
-.mat-slide-toggle {
-  margin-left: 16px;
-  color: #99CCE5;
-  display: none;
-}
-
-.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: #0096DB;
-}
-
-.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-  background-color: #0096DB;
 }
 
 .actions {
@@ -130,17 +120,18 @@ header.popup-header .close-btn {
   width: 100%;
   padding: 16px;
   font-size: 16px;
-  background-color:#0096DB !important;
-  color: white !important ;
+  background-color: #0096DB !important;
+  color: white !important;
   border: none;
   border-radius: 8px;
 }
 
 @media (max-width: 768px) {
   .popup-container {
-    width: 90%;
+    width: 100%;
     height: 80vh;
     top: 10px;
+    padding: 0;
   }
 
   .popup-subheader .subtitle {
@@ -163,10 +154,18 @@ header.popup-header .close-btn {
 
 @media (max-width: 480px) {
   .popup-container {
-    width: 100%;
-    height: 100vh;
-    top: 2vh; 
-    padding: 10px;
+    width: 100%;  
+    height: 100vh; 
+    max-height: 100vh;
+    top: 0;
+    left: 0;
+    transform: none;
+    padding: 0 ;
+    overflow-y: auto;
+  }
+
+  .popup-header {
+    padding: 12px;
   }
 
   .popup-subheader h2 {
@@ -175,6 +174,11 @@ header.popup-header .close-btn {
 
   .popup-subheader .subtitle {
     font-size: 0.8rem;
+    padding-left: 10px; 
+    padding-right: 10px; 
+    margin-right: 0px !important; 
+    width: auto; 
+  word-wrap: break-word;
   }
 
   .cookie-info label {
@@ -188,4 +192,8 @@ header.popup-header .close-btn {
   .actions button {
     font-size: 0.9rem;
   }
+}
+
+body.modal-open {
+  overflow: hidden;
 }

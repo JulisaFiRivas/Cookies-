@@ -1,5 +1,7 @@
-<h2>¿Seguro que deseas eliminar esta cookie?</h2>
-<mat-dialog-actions align="end">
+<div class="dialog-container">
+  <h2 mat-dialog-title>¿Seguro que deseas eliminar esta cookie?</h2>
+  <div class="button-container">
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
     <button mat-flat-button color="warn" (click)="onConfirm()">Borrar</button>
-  </mat-dialog-actions>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { ViewEncapsulation } from '@angular/core';
+import { BannerService } from '../../../services/banner.service';
 
 @Component({
   selector: 'app-cookie-pop',
@@ -20,21 +21,23 @@ import { ViewEncapsulation } from '@angular/core';
 })
 export class CookiePopComponent {
   cookies: any;  
-  bannerVisible = false;
+  
   constructor(
     public dialogRef: MatDialogRef<CookiePopComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any 
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private bannerService: BannerService
+
   ) {
     this.cookies = data; 
   }
 
   closeDialog() {
     this.dialogRef.close();
-    this.bannerVisible = true;
   }
 
   guardarConfiguracion() {
     localStorage.setItem('cookiesPreferences', JSON.stringify(this.cookies));
+    this.bannerService.hideBanner();
     this.closeDialog();
   }
 }

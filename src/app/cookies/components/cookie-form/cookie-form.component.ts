@@ -28,18 +28,18 @@ export class CookieFormComponent {
   constructor(){
     this.cookieForm = this.fb.group({
       id: [null],
-      nombre: ['', [Validators.required, Validators.maxLength(20)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(1000)]]
+      nombre: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/\S+/)]], // No permite solo espacios
+      descripcion: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(/\S+/)]], // No permite solo espacios
     });
-
-    this.route.params.subscribe((params)=> {
-      if (params['id']){
+  
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
         this.isEditMode = true;
         this.cargarProductos(params['id']);
       }
     });
-
   }
+  
 
   private cargarProductos(id:number){
     this.cookieService.getCookieById(id).subscribe({
@@ -52,31 +52,42 @@ export class CookieFormComponent {
     });
   }
 
-  onSubmit(){
-    if(this.cookieForm.invalid) return;
-
-    const cookieData = {...this.cookieForm}.value;
-    if(this.isEditMode){
+  onSubmit() {
+    if (this.cookieForm.invalid || this.formularioSoloEspacios()) {
+      this.snackBar.open('Por favor, ingrese datos válidos.', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
+  
+    const cookieData = { ...this.cookieForm.value };
+    if (this.isEditMode) {
       this.cookieService.updateCookie(cookieData.id, cookieData).subscribe({
         next: () => {
-          this.snackBar.open('Cookie actualizada con exito!', 'Cerrar', {
+          this.snackBar.open('Cookie actualizada con éxito!', 'Cerrar', {
             duration: 3000,
           });
           this.router.navigate(['/cookies/list']);
         },
         error: (err) => console.error(err),
       });
-    }else{
+    } else {
       delete cookieData.id;
-       this.cookieService.createCookie(cookieData).subscribe({
-         next: () => {
-           this.snackBar.open('Cookie agregada con exito!', 'Cerrar', {
-             duration: 3000,
-           });
-           this.router.navigate(['/cookies/list']);
-         },
-         error: (err) => console.error(err),
-        });
+      this.cookieService.createCookie(cookieData).subscribe({
+        next: () => {
+          this.snackBar.open('Cookie agregada con éxito!', 'Cerrar', {
+            duration: 3000,
+          });
+          this.router.navigate(['/cookies/list']);
+        },
+        error: (err) => console.error(err),
+      });
     }
+  }
+  
+  private formularioSoloEspacios(): boolean {
+    const nombre = this.cookieForm.get('nombre')?.value.trim();
+    const descripcion = this.cookieForm.get('descripcion')?.value.trim();
+    return nombre === '' || descripcion === '';
   }
 }

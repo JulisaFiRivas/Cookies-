@@ -26,6 +26,7 @@ export class CookieListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCookies();
+    
   }
    
   getCookies(): void {

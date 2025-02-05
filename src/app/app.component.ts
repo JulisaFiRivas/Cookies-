@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { CookieBannerComponent } from "./cookies/components/cookie-banner/cookie-banner.component";
+import { BannerService } from './services/banner.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +17,26 @@ import { CookieBannerComponent } from "./cookies/components/cookie-banner/cookie
 })
 export class AppComponent {
   title = 'crudCookie';
-  private router = inject (Router);
+  bannerVisible$: Observable<boolean>;
+  isHomePage = false;
+  bannerVisible = false;
+  constructor(private router: Router, public bannerService: BannerService) {
+    this.bannerVisible$ = this.bannerService.bannerVisible$; 
+  }
+
   irAGestionCookies() {
     this.router.navigate(['cookies/list']);
   }
+
+  ngOnInit() {
+    
+    this.router.events.subscribe(() => {
+      this.isHomePage = this.router.url === '/cookies'; 
+    });
+
+    this.bannerService.bannerVisible$.subscribe(isVisible => {
+      this.bannerVisible = isVisible;
+    });
+  }
+  
 }

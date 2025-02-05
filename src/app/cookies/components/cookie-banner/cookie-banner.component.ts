@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { Subscription } from 'rxjs';
 import { PopUpService } from '../../../services/pop-up.service';
+import { BannerService } from '../../../services/banner.service';
 import { inject } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -29,22 +31,40 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class CookieBannerComponent implements OnInit {
   private popUpService = inject(PopUpService);
+  private bannerService = inject(BannerService);
+  private routerSubscription!: Subscription;
   cookies = {
     Analiticas: false,
-    Funcionales: false,
+    Funcionales: true,
     Comerciales: false,
-    Marketing: true,
+    Marketing: false,
   };
+
+  constructor(private router: Router){}
 
   bannerVisible = false;
 
+
   ngOnInit() {
+    this.verificarPreferenciasCookies();
+    this.routerSubscription = this.router.events.subscribe(() => {
+      this.verificarPreferenciasCookies();
+    });
+
+    this.bannerService.bannerVisible$.subscribe(visible => {
+      this.bannerVisible = visible;
+    });
+  }
+
+  verificarPreferenciasCookies() {
     const savedCookies = localStorage.getItem('cookiesPreferences');
-    if (savedCookies) {
-      this.cookies = JSON.parse(savedCookies);
-      this.bannerVisible = false; 
-    }else{
-      this.bannerVisible = true;
+    this.bannerVisible = !savedCookies; 
+    console.log(this.bannerVisible)
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
     }
   }
 
@@ -54,16 +74,18 @@ export class CookieBannerComponent implements OnInit {
     this.cookies.Comerciales = true;
     this.cookies.Marketing = true;
     this.guardarEnLocalStorage();
+    this.bannerService.actualizarEstadoBanner();
     this.ocultarBanner();
     console.log('Cookies aceptadas');
   }
 
   rejectCookies() {
     this.cookies.Analiticas = false;
-    this.cookies.Funcionales = false; 
+    this.cookies.Funcionales = true; 
     this.cookies.Comerciales = false;
-    this.cookies.Marketing = true;
+    this.cookies.Marketing = false;
     this.guardarEnLocalStorage();
+    this.bannerService.actualizarEstadoBanner();
     this.ocultarBanner();
     console.log('Cookies rechazadas');
   }
