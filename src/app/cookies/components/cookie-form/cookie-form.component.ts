@@ -67,7 +67,7 @@ export class CookieFormComponent {
           this.snackBar.open('Cookie actualizada con éxito!', 'Cerrar', {
             duration: 3000,
           });
-          this.router.navigate(['/cookies/list']);
+          this.router.navigate(['/interno/internasCookies/list']);
         },
         error: (err) => console.error(err),
       });
@@ -78,7 +78,7 @@ export class CookieFormComponent {
           this.snackBar.open('Cookie agregada con éxito!', 'Cerrar', {
             duration: 3000,
           });
-          this.router.navigate(['/cookies/list']);
+          this.router.navigate(['/interno/internasCookies/list']);
         },
         error: (err) => console.error(err),
       });

@@ -1,0 +1,43 @@
+<body>
+    <mat-toolbar color="primary" class="header-toolbar">
+      <span>Politicas de Cookies</span>
+      <span class="spacer"></span>
+      <button class="btn btn-dark" (click)="onLogout()">Logout</button>
+      <span class="spacer1"></span>
+
+    </mat-toolbar>
+    
+    <div class="main">
+      <div class="content">
+        <nav id="sidebar" class="navbar bg-body-tertiary vh-100 flex-column justify-content-start">
+          <div class="container-fluid justify-content-center p-1">
+            <a class="navbar-brand h1 fw-bold text-success mb-3" routerLink="/home">
+              Auth EC
+            </a>
+          </div>
+          <ul class="nav flex-column w-100 px-3">
+            <li class="nav-item" [appHideIfClaimsNotMet]="claimReq.adminOnly">
+              <a class="nav-link" routerLink="">Gestionar Cookies</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/cookies/politicas">Politicas Cookies</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/cookies/politicas">Usuarios Web</a>
+            </li>
+          </ul>
+        </nav>
+        <div id="main">
+          <div class="mt-5 p-5">
+            <router-outlet />
+          </div>
+        </div>
+        <app-cookie-banner></app-cookie-banner>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>&copy; Politicas de Cookie footer</p>
+    </footer>
+  </body>
+  

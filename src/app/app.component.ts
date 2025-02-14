@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
 import { CookieBannerComponent } from "./cookies/components/cookie-banner/cookie-banner.component";
 import { BannerService } from './services/banner.service';
 import { Observable } from 'rxjs';
+import { UserComponent } from './cookies/components/user/user.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, CookieBannerComponent],
+  imports: [RouterOutlet, CommonModule,MatToolbarModule, MatButtonModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -25,13 +27,13 @@ export class AppComponent {
   }
 
   irAGestionCookies() {
-    this.router.navigate(['cookies/list']);
+    this.router.navigate(['/interno/internasCookies/list']);
   }
 
   ngOnInit() {
     
     this.router.events.subscribe(() => {
-      this.isHomePage = this.router.url === '/cookies'; 
+      this.isHomePage = this.router.url === '/login'; 
     });
 
     this.bannerService.bannerVisible$.subscribe(isVisible => {

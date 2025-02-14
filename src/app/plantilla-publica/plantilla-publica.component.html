@@ -1,0 +1,19 @@
+<body>
+    <mat-toolbar color="primary" class="header-toolbar">
+      <span>Politicas de Cookies</span>
+      <span class="spacer"></span>
+      <button class="btn btn-dark" (click)="onLogin()">Inicia Sesion</button>
+    </mat-toolbar>
+    
+    <div class="main">
+      <div class="content">
+        <app-cookie-banner></app-cookie-banner>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>&copy; Politicas de Cookie footer</p>
+    </footer>
+  </body>
+  

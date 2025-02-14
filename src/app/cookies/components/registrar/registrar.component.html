@@ -1,0 +1,54 @@
+<div class="mb-4">
+  <h2 class="text-light"> Registrate </h2>
+  <div>¿Ya tienes una cuenta?
+    <a routerLink="/signin" class="text-decoration-none fw-medium text-light d-inlin-block">Inicia Sesion</a>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <input class="form-control bg-body-secondary" placeholder="Nombre Completo" formControlName="fullName">
+    <div class="error-feedback" *ngIf="hasDisplayableError('fullName') && form.controls.fullName.hasError('required')">
+      Ingresa tu nombre.
+    </div>
+  </div>
+  <div class="mb-3">
+    <input class="form-control bg-body-secondary" placeholder="Correo Electronico" formControlName="email">
+    <div class="error-feedback" *ngIf="hasDisplayableError('email')">
+      <div *ngIf="form.controls.email.hasError('required')">
+        Por favor ingresa tu correo.
+      </div>
+      <div *ngIf="form.controls.email.hasError('email')">
+        Por favor ingresa un correo valido.
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <input class="form-control bg-body-secondary" placeholder="Contraseña" formControlName="password">
+    <div class="error-feedback" *ngIf="hasDisplayableError('password')">
+      <ng-container [ngSwitch]="form.controls.password.errors | firstKey">
+        <div *ngSwitchCase="'required'">
+          Por favor ingresa tu contraseña.
+        </div>
+        <div *ngSwitchCase="'minlength'">
+          Al menos 6 caracteres requeridos.
+        </div>
+        <div *ngSwitchCase="'pattern'">
+          Uno o más caracteres especiales.
+        </div>
+      </ng-container>
+      
+    </div>
+  </div>
+  <div class="mb-3">
+    <input class="form-control bg-body-secondary" placeholder="Confirmar Contraseña" formControlName="confirmPassword">
+    <div class="error-feedback" 
+    *ngIf="hasDisplayableError('confirmPassword') && form.controls.confirmPassword.hasError('passwordMismatch')">
+      Contraseñas no son iguales.
+    </div>
+  </div>
+  <div class="mt-4">
+    <button type="submit" class="btn btn-light w-100 rounded-3">
+      Registrar
+    </button>
+  </div>
+</form>

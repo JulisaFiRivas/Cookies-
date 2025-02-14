@@ -1,0 +1,133 @@
+/* Estilos generales */
+.register-card {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.register-card h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #0096DB;
+}
+
+.register-form .full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button.full-width {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.login-link {
+  margin-top: 20px;
+}
+
+.login-link p {
+  font-size: 14px;
+  color: #555;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: #0096DB;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries para hacerlo responsive */
+
+/* Para pantallas pequeñas (teléfonos) */
+@media (max-width: 599px) {
+  .register-card {
+    max-width: 90%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .register-card h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .register-form .full-width {
+    margin-bottom: 10px;
+  }
+
+  button.full-width {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-link p {
+    font-size: 12px;
+  }
+
+  .login-link a {
+    font-size: 14px;
+  }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .register-card {
+    max-width: 500px;
+    padding: 20px;
+    margin: 30px auto;
+  }
+
+  .register-card h1 {
+    font-size: 24px;
+  }
+
+  button.full-width {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .login-link p {
+    font-size: 13px;
+  }
+
+  .login-link a {
+    font-size: 16px;
+  }
+}
+
+/* Para pantallas grandes (computadoras) */
+@media (min-width: 1025px) {
+  .register-card {
+    max-width: 450px;
+    padding: 20px;
+    margin: 50px auto;
+  }
+
+  .register-card h1 {
+    font-size: 26px;
+  }
+
+  button.full-width {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .login-link p {
+    font-size: 14px;
+  }
+
+  .login-link a {
+    font-size: 16px;
+  }
+}
