@@ -11,6 +11,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(APP_ROUTES), 
     provideAnimationsAsync(), 
-    provideHttpClient(withInterceptors([authInterceptor])), provideAnimationsAsync(), provideAnimationsAsync(), provideToastr({positionClass: 'toast-top-center'})
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideAnimationsAsync(), 
+    provideAnimationsAsync(), provideToastr({positionClass: 'toast-top-center'})
   ]
 };

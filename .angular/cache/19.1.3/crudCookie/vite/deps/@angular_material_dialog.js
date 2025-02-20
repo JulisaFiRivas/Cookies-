@@ -14,6 +14,16 @@ import {
   CdkScrollable
 } from "./chunk-MD7JFGU6.js";
 import {
+  animate,
+  animateChild,
+  group,
+  query,
+  state,
+  style,
+  transition,
+  trigger
+} from "./chunk-WR7UNCB2.js";
+import {
   A11yModule,
   ESCAPE,
   FocusMonitor,
@@ -26,16 +36,6 @@ import {
 import {
   Directionality
 } from "./chunk-XJ7ZJ5JL.js";
-import {
-  animate,
-  animateChild,
-  group,
-  query,
-  state,
-  style,
-  transition,
-  trigger
-} from "./chunk-WR7UNCB2.js";
 import {
   Platform,
   _getFocusedElementPierceShadowDom,

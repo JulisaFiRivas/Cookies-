@@ -6,11 +6,11 @@ import { CookieBannerComponent } from "./components/cookie-banner/cookie-banner.
 import { LoginComponent } from "./components/login/login.component";
 import { RegistrarComponent } from "./components/registrar/registrar.component";
 import { UserListComponent } from "./components/user-list/user-list.component";
+import { authGuard } from "../guarded/auth.guard";
 export const COOKIE_ROUTES: Routes = [
     {path: '', component: LoginComponent},
     { path: 'signin', component: LoginComponent },
     { path: 'users', component: UserListComponent },
-    { path: 'politicas', component: CookiePoliticasComponent },
     { path: 'policy', component: CookiePoliticasComponent },
     { path: 'signup', component: RegistrarComponent },
 ];
@@ -18,5 +18,8 @@ export const COOKIE_ROUTES: Routes = [
 export const COOKIE_ROUTES_INTERNAS: Routes = [
     { path: 'list', component: CookieListComponent },
     { path: 'new', component: CookieFormComponent },
-    { path: 'edit/:id', component: CookieFormComponent },
-];
+    { path: 'edit/:id', component: CookieFormComponent},
+    { path: 'gestion', component: UserListComponent },
+
+  ];
+  

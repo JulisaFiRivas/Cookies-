@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from "@angular/router"
 import { BehaviorSubject } from 'rxjs';
+import { TOKEN_KEY, USER_KEY } from '../guarded/constantes';
 
 
 @Injectable({
@@ -13,11 +14,6 @@ export class AuthService {
   private http = inject(HttpClient);
   private apiUrl= 'https://localhost:7236/api'; 
 
-  private sesionUsuario : BehaviorSubject<any> ;
-  constructor(){
-    this.sesionUsuario = new BehaviorSubject<any>(localStorage.getItem("token"))
-  }
-
   createUser(formData:any){
     return this.http.post(this.apiUrl+'/signup',formData);
   }
@@ -26,20 +22,44 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/signin',formData);
   }
 
-  isLoggedIn(){
-    return localStorage.getItem('token') != null?true:false
+  saveLocalStorage(token: string, name_key : string){
+    localStorage.setItem(name_key,token);
   }
 
-  getToken() {
-    return localStorage.getItem('token');
+  isLoggedIn(){
+    return this.getLocalStorage(TOKEN_KEY) != null ? true : false;
+  }
+
+  getLocalStorage(name_key : string) {
+    return localStorage.getItem(name_key);
+    console.log(TOKEN_KEY)
   }
 
   deleteToken() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN_KEY);
+  }
+
+  deleteLocalStorage(){
+    localStorage.removeItem(USER_KEY)
   }
 
   getClaims(){
-   return JSON.parse(window.atob(this.getToken()!.split('.')[1]))
+   return JSON.parse(window.atob(this.getLocalStorage(TOKEN_KEY)!.split('.')[1]))
   }
 
+
+  getRoles(): string[] {
+    const userData = localStorage.getItem('user'); 
+    if (userData) {
+      const user = JSON.parse(userData);
+      return user.roles || []; 
+    }
+    return [];
+  }
+
+  getUserRole(): string {  
+    const userData = localStorage.getItem('user') || '{}';
+    const user = JSON.parse(userData);
+    return user.rolName || '';  // Retorna el rol del usuario
+  }
 }

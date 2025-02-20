@@ -28,8 +28,8 @@ export class CookieFormComponent {
   constructor(){
     this.cookieForm = this.fb.group({
       id: [null],
-      nombre: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/\S+/)]], // No permite solo espacios
-      descripcion: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(/\S+/)]], // No permite solo espacios
+      nombre: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/\S+/)]], 
+      descripcion: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(/\S+/)]], 
     });
   
     this.route.params.subscribe((params) => {

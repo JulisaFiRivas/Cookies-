@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { TOKEN_KEY, USER_KEY } from '../../../guarded/constantes';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,10 @@ export class LoginComponent implements OnInit{
   public formBuilder = inject (FormBuilder)
   private router = inject (Router)
   private toastr = inject (ToastrService)
-  private service = inject (AuthService);
+  private authService = inject (AuthService);
 
   ngOnInit(): void {
-      if(this.service.isLoggedIn()){
+      if(this.authService.isLoggedIn()){
         this.router.navigateByUrl('interno/home')
       }
   }
@@ -46,10 +47,12 @@ export class LoginComponent implements OnInit{
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.valid) {
-      this.service.signin(this.form.value).subscribe({
+      this.authService.signin(this.form.value).subscribe({
         next: (res: any) => {
-          localStorage.setItem('token', JSON.stringify(res));
-          this.router.navigateByUrl('/interno');
+          this.authService.saveLocalStorage(res.token, TOKEN_KEY);
+          this.authService.saveLocalStorage(JSON.stringify(res.userDto), USER_KEY);
+          console.log(localStorage.getItem(TOKEN_KEY));
+          this.router.navigateByUrl('interno/home')
         },
         error: err => {
           if (err.status == 400)

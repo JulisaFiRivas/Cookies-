@@ -1,6 +1,7 @@
 <body>
     <mat-toolbar color="primary" class="header-toolbar">
-      <span>Politicas de Cookies</span>
+      <img src="image1.png" alt="Logo" class="logo">
+      <span>GESTOR INTERNO </span>
       <span class="spacer"></span>
       <button class="btn btn-dark" (click)="onLogout()">Logout</button>
       <span class="spacer1"></span>
@@ -17,13 +18,16 @@
           </div>
           <ul class="nav flex-column w-100 px-3">
             <li class="nav-item" [appHideIfClaimsNotMet]="claimReq.adminOnly">
-              <a class="nav-link" routerLink="">Gestionar Cookies</a>
+              <a class="nav-link" routerLink="/interno/internasCookies/list">Gestionar Cookies</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" routerLink="/cookies/politicas">Politicas Cookies</a>
+              <a class="nav-link" routerLink="/politicas">Politicas Cookies</a>
+            </li>
+            <li class="nav-item" [appHideIfClaimsNotMet]="claimReq.adminOnly">
+              <a class="nav-link" routerLink="/interno/internasCookies/gestion">Gestionar Usuarios</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" routerLink="/cookies/politicas">Usuarios Web</a>
+              <a class="nav-link" routerLink="/interno/users">Usuarios Web</a>
             </li>
           </ul>
         </nav>

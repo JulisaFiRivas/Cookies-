@@ -45,8 +45,7 @@ export class CookieListComponent implements OnInit{
 
     editarCookie(id?: number){
       console.log(id)
-
-      const path = id ? `/cookies/edit/${id}` : '/cookies/new';
+      const path = id ? `/interno/internasCookies/edit/${id}` : '/interno/internasCookies/new';
       this.router.navigate([path])
     }
     deleteCookie(id:number){

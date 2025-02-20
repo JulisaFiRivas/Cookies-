@@ -61,37 +61,40 @@ export class RegistrarComponent implements OnInit{
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.valid) {
-      this.service.createUser(this.form.value)
+      const userData = {
+        ...this.form.value, 
+        role: "Usuario" 
+      };
+
+      this.service.createUser(userData)
         .subscribe({
           next: (res: any) => {
             if (res.succeeded) {
               this.form.reset();
               this.isSubmitted = false;
-              this.toastr.success('New user created!', 'Registration Successful')
-              this.router.navigateByUrl('/interno');
+              this.toastr.success('New user created!', 'Registration Successful');
+              this.router.navigateByUrl('interno/home');
             }
           },
           error: err => {
-            if (err.error.errors)
+            if (err.error.errors) {
               err.error.errors.forEach((x: any) => {
                 switch (x.code) {
                   case "DuplicateUserName":
                     break;
-
                   case "DuplicateEmail":
-                    this.toastr.error('Email is already taken.', 'Registration Failed')
+                    this.toastr.error('Email is already taken.', 'Registration Failed');
                     break;
-
                   default:
-                    this.toastr.error('Contact the developer', 'Registration Failed')
+                    this.toastr.error('Contact the developer', 'Registration Failed');
                     console.log(x);
                     break;
                 }
-              })
-            else
-              console.log('error:',err);
+              });
+            } else {
+              console.log('error:', err);
+            }
           }
-
         });
     }
   }

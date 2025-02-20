@@ -49,6 +49,6 @@ export class CookiePoliticasComponent implements OnInit {
 
   irAGestionCookies(): void {
     const router = inject(Router);
-    router.navigate(['/interno/internasCookies/cookies/list']);
+    router.navigate(['/interno/internasCookies/list']);
   }
 }

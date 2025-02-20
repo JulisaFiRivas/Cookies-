@@ -2,13 +2,13 @@ import {
   DomSanitizer
 } from "./chunk-34ICSEEP.js";
 import {
+  HttpClient
+} from "./chunk-5URR4W5Q.js";
+import {
   MatCommonModule
 } from "./chunk-366KKEWK.js";
 import "./chunk-XJ7ZJ5JL.js";
 import "./chunk-CSGKIZBS.js";
-import {
-  HttpClient
-} from "./chunk-5URR4W5Q.js";
 import {
   DOCUMENT
 } from "./chunk-RSZUYX3L.js";

@@ -1,5 +1,8 @@
-export interface User{
-    id: number;
-    NombreCompleto: string;
-    FechaRegistro: Date;
-}
+export interface User {
+    id: string;
+    fullName: string;
+    email: string;
+    rol: string;
+    ultimaConexion: Date;
+  }
+  

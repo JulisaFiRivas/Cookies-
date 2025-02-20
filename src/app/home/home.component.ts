@@ -15,18 +15,20 @@ export class HomeComponent {
   private authService = inject (AuthService)
   private userService = inject (UserService)
 
+  email: string = '';
+
+  ngOnInit(): void {
+    this.userService.getUserProfile().subscribe({
+      next: (res: any) => this.email = res.email,
+      error: (err:any) => console.log('Error al intentar obtener el perfil del usuario:\n', err)
+    })
+  }
+
   onLogout(){
     this.authService.deleteToken();
     this.router.navigateByUrl('/signin');
   }
 
-  fullName: string = ''
  
 
-  ngOnInit(): void {
-    this.userService.getUserProfile().subscribe({
-      next: (res: any) => this.fullName = res.fullName,
-      error: (err: any) => console.log('error while retrieving user profile:\n', err)
-    })
-  }
 }

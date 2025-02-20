@@ -22,8 +22,11 @@ export class PlantillaPrivadaComponent {
   irAGestionCookies() {
     this.router.navigate(['/interno/internasCookies/list']);
   }
+  
+
   onLogout() {
     this.authService.deleteToken();
+    this.authService.deleteLocalStorage();
     this.router.navigateByUrl('/signin');
   }
 }
