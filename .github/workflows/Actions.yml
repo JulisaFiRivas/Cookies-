@@ -39,4 +39,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: |
-          npm run ng -- deploy --repo=https://github.com/JulisaFiRivas/Cookies-/tree/master.git --name="JulisaFiRivas" --email="julisa.figueroa2101@alumnos.ubiobio.cl" --base-href=/Cookies-/tree/master    
+          npm run ng -- deploy --repo=https://github.com/JulisaFiRivas/Cookies-.git --name="JulisaFiRivas" --email="julisa.figueroa2101@alumnos.ubiobio.cl" --base-href=/Cookies-   
