@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { AuthService } from './auth.service';
 export class UserService {
   private http = inject(HttpClient);
   private authService = inject(AuthService); 
-  private apiUrl = 'https://localhost:7236/api';
+  private apiUrl = environment.mainUrl;
 
   getUserProfile(){
     return this.http.get(this.apiUrl + '/userProfile');

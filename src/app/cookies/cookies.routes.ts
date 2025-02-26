@@ -11,7 +11,6 @@ export const COOKIE_ROUTES: Routes = [
     {path: '', component: LoginComponent},
     { path: 'signin', component: LoginComponent },
     { path: 'users', component: UserListComponent },
-    { path: 'policy', component: CookiePoliticasComponent },
     { path: 'signup', component: RegistrarComponent },
 ];
 

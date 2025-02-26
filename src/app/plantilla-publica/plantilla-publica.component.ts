@@ -24,8 +24,8 @@ export class PlantillaPublicaComponent {
   }
 
   onLogin() {
+    this.router.navigateByUrl('/signin');
     this.authService.signin; 
-    this.isAuthenticated = true;
   }
 
   onLogout() {

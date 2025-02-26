@@ -4,6 +4,7 @@ import { inject } from '@angular/core';
 import { Router } from "@angular/router"
 import { BehaviorSubject } from 'rxjs';
 import { TOKEN_KEY, USER_KEY } from '../guarded/constantes';
+import { environment } from '../../environments/environment.prod';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { TOKEN_KEY, USER_KEY } from '../guarded/constantes';
 export class AuthService {
   private router = inject (Router);
   private http = inject(HttpClient);
-  private apiUrl= 'https://localhost:7236/api'; 
+  private apiUrl= environment.mainUrl; 
 
   createUser(formData:any){
     return this.http.post(this.apiUrl+'/signup',formData);
