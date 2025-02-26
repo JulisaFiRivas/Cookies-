@@ -1,32 +1,41 @@
 name: Build & Deploy to GitHub Pages
- 
+
 on:
   push:
     branches: ["master"]
- 
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
- 
+
 jobs:
-  # Build job
   deploy:
     runs-on: ubuntu-latest
- 
+
     steps:
-      - uses: actions/checkout@v4
- 
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Set up Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: latest
- 
+          node-version: '16'  # Use a stable Node.js version compatible with Angular
+
+      # Install dependencies
       - name: Install dependencies
         run: npm install
- 
+
+      # Install Angular CLI globally
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      # Build the Angular project
       - name: Build
         run: npm run build
- 
-      - name: Deploy to Github pages
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: |
