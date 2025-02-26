@@ -1,29 +1,33 @@
-name: Build y Deploy Angular to GitHub Pages
+name: Build & Deploy to GitHub Pages
  
 on:
   push:
-    branches:
-      - master
+    branches: ["master"]
+ 
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
  
 jobs:
+  # Build job
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
  
     steps:
       - uses: actions/checkout@v4
-     
-      - name: setup Node.js
+ 
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: latest
+ 
       - name: Install dependencies
         run: npm install
  
       - name: Build
-        run: npm run build --if-present
-      - name: Deploy a GitHub Actions
+        run: npm run build
+ 
+      - name: Deploy to Github pages
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
         run: |
-          npm run ng -- deploy --repo=https://github.com/JulisaFiRivas/Cookies-.git --name="JulisaFiRivas" --email="julisa.figueroa2101@alumnos.ubiobio.cl" --base-href=/Cookies-  
+          npm run ng -- deploy --repo=https://github.com/JulisaFiRivas/Cookies-/tree/master.git --name="JulisaFiRivas" --email="julisa.figueroa2101@alumnos.ubiobio.cl" --base-href=/Cookies-/tree/master    
