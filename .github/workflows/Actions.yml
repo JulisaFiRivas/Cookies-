@@ -68,6 +68,8 @@ jobs:
       with:
         name: node-app
 
+    - name: Ver credenciales 
+      run: echo ${{ secrets.__clientidsecretname__ }}
     - name: Login to Azure
       uses: azure/login@v2
       with:
