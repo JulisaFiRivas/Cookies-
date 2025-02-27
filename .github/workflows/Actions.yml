@@ -29,7 +29,6 @@ env:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 concurrency:
@@ -83,6 +82,7 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9C368F4C0613483CA9EA25F1BE4B2253 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4861E0B05ACA41859F3D425D34727806 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A2AF73659A76468CB003B53AFD012EB6 }}
+          allow-no-subscriptions: true
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
