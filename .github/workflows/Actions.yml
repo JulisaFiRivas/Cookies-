@@ -9,8 +9,7 @@ env:
   NODE_VERSION: '20.x'                 # set this to the node version to use
 
 permissions:
-  contents: read
-  id-token: write   # <-- This gives permission for OIDC to use id-token
+  contents: read  # No id-token needed for Service Principal authentication
 
 jobs:
   build:
@@ -50,13 +49,13 @@ jobs:
       with:
         name: node-app
 
-    - name: Login to Azure using OIDC
+    - name: Login to Azure using Service Principal
       uses: azure/login@v2
       with:
-        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9C368F4C0613483CA9EA25F1BE4B2253 }}
-        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4861E0B05ACA41859F3D425D34727806 }}
-        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A2AF73659A76468CB003B53AFD012EB6 }}
-        auth-type: 'OIDC'  # Use OIDC authentication
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        auth-type: 'SERVICE_PRINCIPAL'
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
